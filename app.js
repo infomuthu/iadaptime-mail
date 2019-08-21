@@ -21,6 +21,8 @@ app.get("/", (req, res) => {
 
 app.post("/sendmail", (req, res) => {
   console.log("request came");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let user = req.body;
   sendMail(user, info => {
     console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
