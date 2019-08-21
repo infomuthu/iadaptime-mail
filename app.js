@@ -31,17 +31,17 @@ app.post("/sendmail", (req, res) => {
 async function sendMail(user, callback) {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
+    host: "smtp.elasticemail.com",
+    port: 2525,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: details.email,
-      pass: details.password
+      user: "muthu@iadaptime.com",
+      pass: "6353077c-eabf-4a17-b545-e8e01165ec92"
     }
   });
 
   let mailOptions = {
-    from: '"Fun Of Heuristic"<example.gimail.com>', // sender address
+    from: '"Fun Of Heuristic"<muthu@iadaptime.com>', // sender address
     to: user.email, // list of receivers
     subject: "Wellcome to Fun Of Heuristic 👻", // Subject line
     html: `<h1>Hi ${user.name}</h1><br>
