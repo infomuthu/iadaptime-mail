@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 const details = require("./details.json");
 
 const app = express();
+app.options('*', cors());
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
