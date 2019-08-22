@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const details = require("./details.json");
 
 const app = express();
-//app.use(cors({ origin: "*" }));
+app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
 
@@ -39,11 +39,12 @@ app.get("/", (req, res) => {
 
 app.post("/sendmail", (req, res) => {
   console.log("request came");
-  let user = req.body;
-  sendMail(user, info => {
-    console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
-    res.send(info);
-  });
+  res.send("hello");
+  // let user = req.body;
+  // sendMail(user, info => {
+  //   console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
+  //   res.send(info);
+  // });
 });
 
 async function sendMail(user, callback) {
