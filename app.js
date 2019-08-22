@@ -14,13 +14,13 @@ app.listen(3000, () => {
   console.log("The server started on port 3000 !!!!!!");
 });
 
-app.get("/", (req, res) => {
+app.get("/", cors(), (req, res) => {
   res.send(
     "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
   );
 });
 
-app.post("/sendmail", (req, res) => {
+app.post("/sendmail", cors(), (req, res) => {
   console.log("request came");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
