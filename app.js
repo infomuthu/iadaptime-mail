@@ -6,21 +6,21 @@ const nodemailer = require("nodemailer");
 const details = require("./details.json");
 
 const app = express();
-app.options('*', cors());
-app.use(cors({ origin: "*" }));
+//app.options('*', cors());
+app.use(cors({ origin: "http://localhost:4200" }));
 app.use(bodyParser.json());
 
 app.listen(3000, () => {
   console.log("The server started on port 3000 !!!!!!");
 });
 
-app.get("/", cors(), (req, res) => {
+app.get("/", (req, res) => {
   res.send(
     "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
   );
 });
 
-app.post("/sendmail", cors(), (req, res) => {
+app.post("/sendmail", (req, res) => {
   console.log("request came");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
