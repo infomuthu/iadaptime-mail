@@ -6,24 +6,22 @@ const nodemailer = require("nodemailer");
 const details = require("./details.json");
 
 const app = express();
-//app.options('*', cors());
-app.use(cors({ origin: "http://localhost:4200" }));
+app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
-app.listen(3000, () => {
+app.listen(4001, () => {
   console.log("The server started on port 3000 !!!!!!");
 });
 
 app.get("/", (req, res) => {
+ //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4222');
   res.send(
-    "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
+    "<h1 style='text-align: center'>Wellcome to iAdaptime ivestors <br><br>😃👻😃👻😃👻😃👻😃</h1>"
   );
 });
 
 app.post("/sendmail", (req, res) => {
   console.log("request came");
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let user = req.body;
   sendMail(user, info => {
     console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
@@ -38,17 +36,17 @@ async function sendMail(user, callback) {
     port: 2525,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "muthu@iadaptime.com",
-      pass: "6353077c-eabf-4a17-b545-e8e01165ec92"
+      user: 'muthu@iadaptime.com',
+      pass: '6353077c-eabf-4a17-b545-e8e01165ec92'
     }
   });
-
+console.log(transporter)
   let mailOptions = {
-    from: '"Fun Of Heuristic"<muthu@iadaptime.com>', // sender address
+    from: '"Muthupandi S"<muthu@iadaptime.com>', // sender address
     to: user.email, // list of receivers
-    subject: "Wellcome to Fun Of Heuristic 👻", // Subject line
+    subject: "Wellcome to iAdaptime investors 👻", // Subject line
     html: `<h1>Hi ${user.name}</h1><br>
-    <h4>Thanks for joining us</h4>`
+    <h4>This is testing for Mail service</h4>`
   };
 
   // send mail with defined transport object
