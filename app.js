@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 
 const details = require("./details.json");
-
+const port=process.env.PORT || 3000;
 const app = express();
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.json());
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-app.listen(4001, () => {
+app.listen(port, () => {
   console.log("The server started on port 3000 !!!!!!");
 });
 
